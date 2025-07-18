@@ -4,8 +4,8 @@ import { assets } from "../assets/frontend_assets/assets";
 const Footer = () => {
   return (
     <footer className="container__width mt-10 sm:mt-30">
-      <div className="flex flex-col md:flex-row justify-between gap-24 py-16">
-        <div className="flex flex-col gap-6 w-[40%]">
+      <div className="flex flex-col md:flex-row justify-between gap-16 sm:gap-24 py-16">
+        <div className="flex flex-col gap-6 w-full sm:w-[40%]">
           <Link to="/">
             <img src={assets.logo} className="w-32" alt="logo" />
           </Link>
@@ -16,7 +16,7 @@ const Footer = () => {
             accusantium veritatis facere reprehenderit!
           </p>
         </div>
-        <div className="flex flex-col gap-2 w-[30%]">
+        <div className="flex flex-col gap-2 w-full sm:w-[30%]">
           <p className="font-semibold text-sl uppercase">Company</p>
           <ul className="text-gray-500 text-sm">
             <li>
@@ -33,7 +33,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="flex flex-col gap-2 w-[30%]">
+        <div className="flex flex-col gap-2 w-full sm:w-[30%]">
           <p className="font-semibold text-sl uppercase">get in touch</p>
           <ul className="text-gray-500 text-sm">
             <li>+1 234 567 890</li>

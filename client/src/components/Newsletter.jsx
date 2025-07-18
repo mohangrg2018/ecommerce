@@ -10,11 +10,11 @@ const Newsletter = () => {
     setEmail("");
   };
   return (
-    <section className="container__width flex flex-col items-center gap-4 my-20 sm:my-30">
+    <section className="container__width flex flex-col items-center gap-6 my-20 sm:my-30">
       <h2 className="text-2xl sm:text-3xl font-semibold">
         Subscribe now & get 20% off
       </h2>
-      <p className="text-gray-400 text-center">
+      <p className="text-gray-400 text-center w-full sm:w-1/2">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates
         unde itaque quia atque consectetur numquam ratione ducimus debitis
         tempora vero!
