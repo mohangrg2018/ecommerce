@@ -1,9 +1,10 @@
-import { products } from "../assets/frontend_assets/assets";
+import { useContext } from "react";
+import { StoreContext } from "../context/StoreContext";
 import ProductItem from "./ProductItem";
 import Title from "./Title";
 
 const LatestCollection = () => {
-  console.log(products);
+  const { products } = useContext(StoreContext);
   return (
     <section className="container__width my-10 sm:my-20">
       <div className="flex flex-col items-center gap-4">
