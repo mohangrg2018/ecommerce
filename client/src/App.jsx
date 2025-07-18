@@ -5,10 +5,17 @@ import Product from "./pages/Product";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
+import { ToastContainer } from "react-toastify";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
     <>
+      <ToastContainer
+        theme="light"
+        toastClassName="!text-black !bg-white !border !border-gray-200"
+        progressClassName="!bg-black"
+      />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -17,6 +24,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </>
   );
 };
