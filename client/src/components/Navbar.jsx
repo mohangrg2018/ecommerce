@@ -1,7 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import { assets } from "../assets/frontend_assets/assets";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { StoreContext } from "../context/StoreContext";
 const Navbar = () => {
+  const { setShowSearch } = useContext(StoreContext);
   const [openMenu, setOpenMenu] = useState(false);
   return (
     <header className="py-4">
@@ -31,21 +33,28 @@ const Navbar = () => {
         {/* Icons */}
         <div className="flex items-center gap-4 md:gap-6">
           <img
+            onClick={() => setShowSearch(true)}
             src={assets.search_icon}
             className="w-4 cursor-pointer"
             alt="search icon"
           />
-          <div className="group relative">
+          <div className="group relative rounded-sm">
             <img
               src={assets.profile_icon}
               className="w-4 cursor-pointer"
               alt="profile icon"
             />
-            <div className="group-hover:block hidden absolute right-0 pt-3">
+            <div className="group-hover:block hidden absolute right-0 pt-3 bg-white">
               <div className="flex flex-col gap-2 text-sm border px-4 py-2 rounded-sm border-gray-200 text-gray-500 w-[150px]">
-                <NavLink to="/my-profile">My Profile</NavLink>
-                <NavLink to="/orders">Orders</NavLink>
-                <NavLink to="/logout">Logout</NavLink>
+                <NavLink to="/my-profile" className="hover:font-semibold">
+                  My Profile
+                </NavLink>
+                <NavLink to="/orders" className="hover:font-semibold">
+                  Orders
+                </NavLink>
+                <NavLink to="/logout" className="hover:font-semibold">
+                  Logout
+                </NavLink>
               </div>
             </div>
           </div>

@@ -1,9 +1,20 @@
+import { useState } from "react";
 import { products } from "../assets/frontend_assets/assets";
 import { StoreContext } from "./StoreContext";
 
 const StoreContextProvider = ({ children }) => {
   const currency = "$";
-  const ContextValue = { currency, products };
+  const [search, setSearch] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
+
+  const ContextValue = {
+    currency,
+    products,
+    search,
+    setSearch,
+    showSearch,
+    setShowSearch,
+  };
 
   return (
     <StoreContext.Provider value={ContextValue}>

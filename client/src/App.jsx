@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
 import { ToastContainer } from "react-toastify";
 import Footer from "./components/Footer";
+import SearchBar from "./components/SearchBar";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         progressClassName="!bg-black"
       />
       <Navbar />
+      <SearchBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/collection" element={<Collection />} />
