@@ -3,7 +3,7 @@ import { assets } from "../assets/frontend_assets/assets";
 import { useContext, useState } from "react";
 import { StoreContext } from "../context/StoreContext";
 const Navbar = () => {
-  const { setShowSearch } = useContext(StoreContext);
+  const { setShowSearch, getCartCount } = useContext(StoreContext);
   const [openMenu, setOpenMenu] = useState(false);
   return (
     <header className="py-4">
@@ -59,11 +59,16 @@ const Navbar = () => {
             </div>
           </div>
 
-          <img
-            src={assets.cart_icon}
-            className="w-4 cursor-pointer"
-            alt="cart icon"
-          />
+          <Link to="/cart" className="relative">
+            <img
+              src={assets.cart_icon}
+              className="w-5 min-w-5 cursor-pointer"
+              alt="cart icon"
+            />
+            <span className="absolute right-[-5px] bottom-[-5px] text-center w-4 leading-4 bg-black text-white aspect-square rounded-full text-[8px]">
+              {getCartCount()}
+            </span>
+          </Link>
           <img
             onClick={() => setOpenMenu(!openMenu)}
             src={assets.menu_icon}
