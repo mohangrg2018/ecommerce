@@ -19,4 +19,8 @@ body {
   nav .active {
     @apply underline underline-offset-8 decoration-2;
   }
+
+  *::-webkit-scrollbar {
+    display: none;
+  }
 }
