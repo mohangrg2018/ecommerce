@@ -10,12 +10,12 @@ const StoreContextProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState({});
 
   const addToCart = async (itemId, size) => {
-    const cartData = structuredClone(cartItems);
-
     if (!size) {
       toast.error("Please select a size for the item.");
       return;
     }
+
+    let cartData = structuredClone(cartItems);
     if (cartData[itemId]) {
       if (cartData[itemId][size]) {
         cartData[itemId][size] += 1;
@@ -28,18 +28,27 @@ const StoreContextProvider = ({ children }) => {
     }
     setCartItems(cartData);
   };
+
   const getCartCount = () => {
     let totalCount = 0;
     for (const itemId in cartItems) {
       for (const size in cartItems[itemId]) {
         try {
-          totalCount += cartItems[itemId][size];
+          if (cartItems[itemId][size] > 0) {
+            totalCount += cartItems[itemId][size];
+          }
         } catch (error) {
           console.error("Error calculating cart count:", error);
         }
       }
     }
     return totalCount;
+  };
+
+  const updateQuantity = async (itemId, size, quantity) => {
+    let cartData = structuredClone(cartItems);
+    cartData[itemId][size] = quantity;
+    setCartItems(cartData);
   };
 
   const ContextValue = {
@@ -51,6 +60,8 @@ const StoreContextProvider = ({ children }) => {
     setShowSearch,
     addToCart,
     getCartCount,
+    cartItems,
+    updateQuantity,
   };
 
   return (

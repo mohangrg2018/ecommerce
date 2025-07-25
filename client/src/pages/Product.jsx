@@ -11,8 +11,6 @@ const Product = () => {
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
 
-  console.log(size);
-
   useEffect(() => {
     const product = products.find((item) => item._id === productId);
     if (product) {
