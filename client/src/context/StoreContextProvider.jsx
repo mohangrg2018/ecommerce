@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import { products } from "../assets/frontend_assets/assets";
 import { StoreContext } from "./StoreContext";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const StoreContextProvider = ({ children }) => {
   const currency = "$";
+  let shippingFee = 10;
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState({});
@@ -51,8 +54,30 @@ const StoreContextProvider = ({ children }) => {
     setCartItems(cartData);
   };
 
+  const getCartAmount = () => {
+    let totalAmount = 0;
+    for (const itemId in cartItems) {
+      let itemInfo = products.find((product) => product._id === itemId);
+      console.log("Item Info:", itemInfo);
+      for (const size in cartItems[itemId]) {
+        try {
+          if (cartItems[itemId][size] > 0) {
+            totalAmount += itemInfo.price * cartItems[itemId][size];
+            console.log(
+              `Item ID: ${itemId}, Size: ${size}, Quantity: ${cartItems[itemId][size]}, Price: ${itemInfo.price[size]}`
+            );
+          }
+        } catch (error) {
+          console.error("Error calculating cart amount:", error);
+        }
+      }
+    }
+    return totalAmount.toFixed(2);
+  };
+
   const ContextValue = {
     currency,
+    shippingFee,
     products,
     search,
     setSearch,
@@ -62,6 +87,8 @@ const StoreContextProvider = ({ children }) => {
     getCartCount,
     cartItems,
     updateQuantity,
+    getCartAmount,
+    navigate,
   };
 
   return (

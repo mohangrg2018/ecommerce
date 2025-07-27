@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { StoreContext } from "../context/StoreContext";
 import Title from "../components/Title";
 import { assets } from "../assets/frontend_assets/assets";
+import CartTotal from "../components/CartTotal";
 
 const Cart = () => {
   const { cartItems, products, currency, updateQuantity } =
@@ -26,7 +27,7 @@ const Cart = () => {
   }, [cartItems]);
 
   return (
-    <div className="container__width border-t-2 border-gray-200 pt-10">
+    <div className="container__width border-t-2  border-gray-200 pt-10">
       <div>
         <Title text1={"your"} text2={"cart"} />
       </div>
@@ -40,7 +41,7 @@ const Cart = () => {
                 (product) => product._id === item._id
               );
               if (!productData) return null;
-              console.log("Product Data:", productData);
+
               return (
                 <div
                   key={index}
@@ -98,6 +99,9 @@ const Cart = () => {
             })}
           </div>
         )}
+      </div>
+      <div className="flex justify-end my-6 sm:my-10">
+        <CartTotal />
       </div>
     </div>
   );
