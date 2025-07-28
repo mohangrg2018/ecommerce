@@ -39,11 +39,13 @@ const Navbar = () => {
             alt="search icon"
           />
           <div className="group relative rounded-sm">
-            <img
-              src={assets.profile_icon}
-              className="w-4 cursor-pointer"
-              alt="profile icon"
-            />
+            <Link to="/login">
+              <img
+                src={assets.profile_icon}
+                className="w-4 cursor-pointer"
+                alt="profile icon"
+              />
+            </Link>
             <div className="group-hover:block hidden absolute right-0 pt-3 bg-white">
               <div className="flex flex-col gap-2 text-sm border px-4 py-2 rounded-sm border-gray-200 text-gray-500 w-[150px]">
                 <NavLink to="/my-profile" className="hover:font-semibold">

@@ -17,7 +17,7 @@ const Orders = () => {
               className="flex items-center justify-between text-sm border-b border-gray-200 pb-8"
             >
               <div className="flex gap-2">
-                <img src={item.image} className="w-16" alt="" />
+                <img src={item.image[0]} className="w-16" alt="" />
                 <div className="flex flex-col justify-between">
                   <p className="font-semibold">{item.name}</p>
                   <div className="flex items-center gap-2">
